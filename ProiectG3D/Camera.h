@@ -20,6 +20,16 @@ public:
 	Camera(const int width, const int height, const glm::vec3& position);
 
 	void Set(const int width, const int height, const glm::vec3& position);
+	void Reset(const int widht, const int height);
+
+	void Reshape(int windowWidth, int windowHeight);
+
+	const glm::mat4 GetViewMatrix() const;
+	const glm::vec3 GetPosition() const;
+	const glm::mat4 GetProjectionMatrix() const;
+
+
+
 
 	void UpdateCameraVectors();
 
@@ -47,7 +57,6 @@ protected:
 	glm::vec3 up;
 	glm::vec3 worldUp;
 
-	// Euler Angles 
 	float yaw;
 	float pitch;
 

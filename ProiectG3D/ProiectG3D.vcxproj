@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ProiectG3D.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +143,10 @@
     <None Include="Lamp.vs" />
     <None Include="PhongLight.fs" />
     <None Include="PhongLight.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="ECameraMovementType.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
