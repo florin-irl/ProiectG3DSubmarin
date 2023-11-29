@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\F\Desktop\G3D\Proiect\ProiectG3D\fisiereExternale\glm-stable\glm;C:\Users\F\Desktop\G3D\Proiect\ProiectG3D\fisiereExternale\glew-2.1.0\include;C:\Users\F\Desktop\G3D\Proiect\ProiectG3D\fisiereExternale\glfw-3.3.4.bin.WIN32\include\GLFW;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\F\Desktop\G3D\Proiect\ProiectG3D\fisiereExternale\glew-2.1.0\lib\Release\Win32;C:\Users\F\Desktop\G3D\Proiect\ProiectG3D\fisiereExternale\glfw-3.3.4.bin.WIN32\lib-vc2019;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\fisiereExternale\glm-stable\glm;..\fisiereExternale\glew-2.1.0\include;..\fisiereExternale\glfw-3.3.4.bin.WIN32\include\GLFW;$(IncludePath)</IncludePath>
+    <LibraryPath>..\fisiereExternale\glew-2.1.0\lib\Release\Win32;..\fisiereExternale\glfw-3.3.4.bin.WIN32\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -132,6 +132,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ProiectG3D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Lamp.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
