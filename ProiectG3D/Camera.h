@@ -14,6 +14,7 @@
 #include <fstream>
 #include <sstream>
 
+#include "ECameraMovementType.h"
 class Camera
 {
 public:
@@ -28,8 +29,10 @@ public:
 	const glm::vec3 GetPosition() const;
 	const glm::mat4 GetProjectionMatrix() const;
 
+	void ProcessKeyboard(ECameraMovementType direction, float deltaTime);
+	void ProcessMouseMovement(float xOffset, float yOffset, bool constrainPitch = true);
 
-
+	void MouseControl(float xPos, float yPos);
 
 	void UpdateCameraVectors();
 

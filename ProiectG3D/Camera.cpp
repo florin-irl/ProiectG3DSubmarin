@@ -68,6 +68,66 @@ const glm::mat4 Camera::GetProjectionMatrix() const
 	return Proj;
 }
 
+void Camera::ProcessKeyboard(ECameraMovementType direction, float deltaTime)
+{
+	float velocity = (float)(cameraSpeedFactor * deltaTime);
+	switch (direction) {
+	case ECameraMovementType::FORWARD:
+		position += forward * velocity;
+		break;
+	case ECameraMovementType::BACKWARD:
+		position -= forward * velocity;
+		break;
+	case ECameraMovementType::LEFT:
+		position -= right * velocity;
+		break;
+	case ECameraMovementType::RIGHT:
+		position += right * velocity;
+		break;
+	case ECameraMovementType::UP:
+		position += up * velocity;
+		break;
+	case ECameraMovementType::DOWN:
+		position -= up * velocity;
+		break;
+	}
+}
+
+void Camera::ProcessMouseMovement(float xOffset, float yOffset, bool constrainPitch)
+{
+	yaw += xOffset;
+	pitch += yOffset;
+
+	if (constrainPitch) {
+		if (pitch > 89.0f)
+			pitch = 89.0f;
+		if (pitch < -89.0f)
+			pitch = -89.0f;
+	}
+}
+
+void Camera::MouseControl(float xPos, float yPos)
+{
+	if (bFirstMouseMove) {
+		lastX = xPos;
+		lastY = yPos;
+		bFirstMouseMove = false;
+	}
+
+	float xChange = xPos - lastX;
+	float yChange = lastY - yPos;
+	lastX = xPos;
+	lastY = yPos;
+
+	if (fabs(xChange) <= 1e-6 && fabs(yChange) <= 1e-6) {
+		return;
+	}
+	xChange *= mouseSensitivity;
+	yChange *= mouseSensitivity;
+
+	ProcessMouseMovement(xChange, yChange);
+}
+
 void Camera::UpdateCameraVectors()
 {
 	this->forward.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
