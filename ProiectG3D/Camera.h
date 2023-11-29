@@ -30,13 +30,14 @@ public:
 	const glm::mat4 GetProjectionMatrix() const;
 
 	void ProcessKeyboard(ECameraMovementType direction, float deltaTime);
-	void ProcessMouseMovement(float xOffset, float yOffset, bool constrainPitch = true);
+	void ProcessMouseScroll(float yOffset);
 
 	void MouseControl(float xPos, float yPos);
 
+private:
+	void ProcessMouseMovement(float xOffset, float yOffset, bool constrainPitch = true);
 	void UpdateCameraVectors();
 
-private:
 	const float zNEAR = 0.1f;
 	const float zFAR = 500.f;
 	const float YAW = -90.0f;
