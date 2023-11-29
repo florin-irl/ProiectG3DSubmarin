@@ -74,6 +74,10 @@
     <IncludePath>..\fisiereExternale\glm-stable\glm;..\fisiereExternale\glew-2.1.0\include;..\fisiereExternale\glfw-3.3.4.bin.WIN32\include\GLFW;$(IncludePath)</IncludePath>
     <LibraryPath>..\fisiereExternale\glew-2.1.0\lib\Release\Win32;..\fisiereExternale\glfw-3.3.4.bin.WIN32\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Users\alexg\OneDrive\Documente\GitHub\ProiectG3DSubmarin\fisiereExternale\glfw-3.3.4.bin.WIN32\include\GLFW;C:\Users\alexg\OneDrive\Documente\GitHub\ProiectG3DSubmarin\fisiereExternale\glm-stable\glm;C:\Users\alexg\OneDrive\Documente\GitHub\ProiectG3DSubmarin\fisiereExternale\glew-2.1.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\alexg\OneDrive\Documente\GitHub\ProiectG3DSubmarin\fisiereExternale\glfw-3.3.4.bin.WIN32\lib-vc2019;C:\Users\alexg\OneDrive\Documente\GitHub\ProiectG3DSubmarin\fisiereExternale\glew-2.1.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
