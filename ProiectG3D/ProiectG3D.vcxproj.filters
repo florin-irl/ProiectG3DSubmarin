@@ -23,5 +23,14 @@
     <None Include="Lamp.vs">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Lamp.fs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="PhongLight.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="PhongLight.fs">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
