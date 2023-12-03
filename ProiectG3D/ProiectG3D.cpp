@@ -18,6 +18,9 @@
 #pragma comment (lib, "glew32.lib")
 #pragma comment (lib, "OpenGL32.lib")
 
+//to implement sky box
+
+
 int main()
 {
 	glfwInit();
