@@ -21,9 +21,9 @@ public:
 
 private:
 	// Variables for easy access
-	Assimp::Importer importer;
+	/*Assimp::Importer importer;
 	const aiScene* scene = nullptr;
-	aiNode* root_node = nullptr;
+	aiNode* root_node = nullptr;*/
 	const char* file;
 	std::vector<unsigned char> data;
 	json JSON;

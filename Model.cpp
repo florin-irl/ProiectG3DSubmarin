@@ -2,7 +2,7 @@
 
 Model::Model(const char* file)
 {
-	scene = importer.ReadFile(file, aiProcess_JoinIdenticalVertices | aiProcess_Triangulate | aiProcess_FlipUVs);
+	//scene = importer.ReadFile(file, aiProcess_JoinIdenticalVertices | aiProcess_Triangulate | aiProcess_FlipUVs);
 
 	// Make a JSON object
 	std::string text = get_file_contents(file);
