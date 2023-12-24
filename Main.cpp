@@ -122,8 +122,8 @@ int main()
 	* Also note that this requires C++17, so go to Project Properties, C/C++, Language, and select C++17
 	*/
 	std::string parentDir = (fs::current_path()).string();
-	std::string modelPath = "/Resources/Sky/models/airplane/scene.gltf";
-	//std::string modelPath = "/Resources/Sky/models/submarine.glb";
+	//std::string modelPath = "/Resources/Sky/models/airplane/scene.gltf";
+	std::string modelPath = "/Resources/Sky/models/submarin/submarin.gltf";
 
 	// Load in models
 	Model model((parentDir + modelPath).c_str());

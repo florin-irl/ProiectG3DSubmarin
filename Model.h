@@ -2,6 +2,10 @@
 #define MODEL_CLASS_H
 
 #include<json/json.h>
+#include <assimp/Importer.hpp>
+#include <assimp/Vertex.h>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 #include"Mesh.h"
 
 using json = nlohmann::json;
@@ -11,13 +15,15 @@ class Model
 {
 public:
 	// Loads in a model from a file and stores tha information in 'data', 'JSON', and 'file'
-	//Assimp::Importer importer;
 	Model(const char* file);
 
 	void Draw(Shader& shader, Camera& camera);
 
 private:
 	// Variables for easy access
+	Assimp::Importer importer;
+	const aiScene* scene = nullptr;
+	aiNode* root_node = nullptr;
 	const char* file;
 	std::vector<unsigned char> data;
 	json JSON;
