@@ -124,11 +124,12 @@ int main()
 	std::string parentDir = (fs::current_path()).string();
 	//std::string modelPath = "/Resources/Sky/models/airplane/scene.gltf";
 	std::string modelPath = "/Resources/submarinMetal/submarinMetal.gltf";
+	std::string modelPath2 = "/Resources/Sky/models/airplane/scene.gltf";
 	
 
 	// Load in models
 	Model model((parentDir + modelPath).c_str());
-
+	Model model2((parentDir + modelPath2).c_str());
 
 
 	// Variables to create periodic event for FPS displaying
@@ -256,6 +257,7 @@ int main()
 
 		// Draw the normal model
 		model.Draw(shaderProgram, camera);
+		model2.Draw(shaderProgram, camera);
 
 		// Since the cubemap will always have a depth of 1.0, we need that equal sign so it doesn't get discarded
 		glDepthFunc(GL_LEQUAL);
