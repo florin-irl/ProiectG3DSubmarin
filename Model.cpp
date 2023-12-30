@@ -1,5 +1,5 @@
 #include"Model.h"
-
+#include <iostream>
 Model::Model(const char* file)
 {
 	//scene = importer.ReadFile(file, aiProcess_JoinIdenticalVertices | aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -7,7 +7,7 @@ Model::Model(const char* file)
 	// Make a JSON object
 	std::string text = get_file_contents(file);
 	JSON = json::parse(text);
-
+	Position = glm::vec3(0.0f, 0.0f, 0.0f);
 	// Get the binary data
 	Model::file = file;
 	data = getData();
@@ -22,6 +22,43 @@ void Model::Draw(Shader& shader, Camera& camera)
 	for (unsigned int i = 0; i < meshes.size(); i++)
 	{
 		meshes[i].Mesh::Draw(shader, camera, matricesMeshes[i]);
+	}
+}
+
+void Model::InputsModel(GLFWwindow* window, float deltaTime)
+{
+	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
+	{
+		Position += speed * 2 * deltaTime * Orientation;
+		std::cout << Position.x << ' '<< Position.y <<' '<< Position.z << std::endl;
+	}
+	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+	{
+		Position += speed * 2 * deltaTime * -glm::normalize(glm::cross(Orientation, Up));
+	}
+	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+	{
+		Position += speed * 2 * deltaTime * -Orientation;
+	}
+	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+	{
+		Position += speed * 2 * deltaTime * glm::normalize(glm::cross(Orientation, Up));
+	}
+	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
+	{
+		Position += speed * 2 * deltaTime * Up;
+	}
+	if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS)
+	{
+		Position += speed * 2 * deltaTime * -Up;
+	}
+	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+	{
+		speed = 0.8f;
+	}
+	else if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE)
+	{
+		speed = 0.5f;
 	}
 }
 
@@ -259,7 +296,8 @@ std::vector<Texture> Model::getTextures()
 		if (!skip)
 		{
 			// Load diffuse texture
-			if (texPath.find("grunge-wall-texture") != std::string::npos || texPath.find("diffuse") != std::string::npos)
+			if (texPath.find("grunge-wall-texture") != std::string::npos || texPath.find("diffuse") != std::string::npos
+				||texPath.find("underwater_sand1")!=std::string::npos||texPath.find("water_texture")!=std::string::npos)
 			{
 				Texture diffuse = Texture((fileDirectory + texPath).c_str(), "diffuse", loadedTex.size());
 				textures.push_back(diffuse);

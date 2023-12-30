@@ -123,12 +123,16 @@ int main()
 	*/
 	std::string parentDir = (fs::current_path()).string();
 	//std::string modelPath = "/Resources/Sky/models/airplane/scene.gltf";
+	//submarinMetal/submarinMetal.gltf
 	std::string modelPath = "/Resources/submarinMetal/submarinMetal.gltf";
-
+	std::string modelPath2 = "/Resources/teren/terrainSmall.gltf";
+	std::string modelPath3 = "/Resources/apa/water3.gltf";
 
 	// Load in models
 	Model model((parentDir + modelPath).c_str());
 	Model model2((parentDir + modelPath2).c_str());
+	Model model3((parentDir + modelPath3).c_str());
+
 
 
 	// Variables to create periodic event for FPS displaying
@@ -248,8 +252,10 @@ int main()
 		// Clean the back buffer and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// Handles camera inputs (delete this if you have disabled VSync)
+		// Handles 
+		// s (delete this if you have disabled VSync)
 		camera.Inputs(window, deltaTime);
+		
 		// Updates and exports the camera matrix to the Vertex Shader
 		camera.updateMatrix(45.0f, 0.1f, 100.0f);
 
@@ -257,7 +263,9 @@ int main()
 		// Draw the normal model
 		model.Draw(shaderProgram, camera);
 		model2.Draw(shaderProgram, camera);
+		model3.Draw(shaderProgram, camera);
 
+		model.InputsModel(window, deltaTime);
 		// Since the cubemap will always have a depth of 1.0, we need that equal sign so it doesn't get discarded
 		glDepthFunc(GL_LEQUAL);
 

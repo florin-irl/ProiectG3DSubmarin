@@ -7,7 +7,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include"Mesh.h"
-
+#include <iostream>
 using json = nlohmann::json;
 
 
@@ -18,6 +18,13 @@ public:
 	Model(const char* file);
 
 	void Draw(Shader& shader, Camera& camera);
+
+	float speed = 0.5f;
+	glm::vec3 Orientation = glm::vec3(0.0f, 0.0f, -1.0f);
+	glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f);
+	glm::vec3 Position;
+
+	void InputsModel(GLFWwindow* window, float deltaTime);
 
 private:
 	// Variables for easy access
