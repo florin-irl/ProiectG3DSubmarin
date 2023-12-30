@@ -124,8 +124,7 @@ int main()
 	std::string parentDir = (fs::current_path()).string();
 	//std::string modelPath = "/Resources/Sky/models/airplane/scene.gltf";
 	std::string modelPath = "/Resources/submarinMetal/submarinMetal.gltf";
-	std::string modelPath2 = "/Resources/Sky/models/airplane/scene.gltf";
-	
+
 
 	// Load in models
 	Model model((parentDir + modelPath).c_str());
