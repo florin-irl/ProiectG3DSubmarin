@@ -16,12 +16,24 @@ Model::Model(const char* file)
 	traverseNode(0);
 }
 
-void Model::Draw(Shader& shader, Camera& camera)
-{
-	// Go over all meshes and draw each one
-	for (unsigned int i = 0; i < meshes.size(); i++)
-	{
-		meshes[i].Mesh::Draw(shader, camera, matricesMeshes[i]);
+void Model::Draw(Shader& shader, Camera& camera) {
+	// Iterate through all the meshes and draw each one
+	for (unsigned int i = 0; i < meshes.size(); ++i) {
+		// Apply translation, rotation, and scale to the model matrix
+		glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), Position);
+		modelMatrix = modelMatrix * glm::mat4_cast(rotationsMeshes[i]);  // Assuming rotationsMeshes stores quaternions
+		modelMatrix = glm::scale(modelMatrix, scalesMeshes[i]);
+
+		// Set the model matrix in the shader
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+
+		// Pass other necessary matrices if needed (translation, rotation, scale)
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "translation"), 1, GL_FALSE, glm::value_ptr(glm::translate(glm::mat4(1.0f), translationsMeshes[i])));
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "rotation"), 1, GL_FALSE, glm::value_ptr(glm::mat4_cast(rotationsMeshes[i])));
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "scale"), 1, GL_FALSE, glm::value_ptr(glm::scale(glm::mat4(1.0f), scalesMeshes[i])));
+
+		// Draw the mesh
+		meshes[i].Draw(shader, camera, matricesMeshes[i]);
 	}
 }
 

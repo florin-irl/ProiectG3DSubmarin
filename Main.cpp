@@ -10,6 +10,39 @@ const unsigned int width = 800;
 const unsigned int height = 800;
 
 
+int isDay = 1;
+
+void changeSkyBox(int isDay)
+{
+	std::string parentDir = (fs::current_path()).string();
+	if (isDay)
+	{
+		isDay = 0;
+		std::string facesCubemap[6] =
+		{
+			parentDir + "/Resources/Sky/skybox/rightNight.jpg",
+			parentDir + "/Resources/Sky/skybox/leftNight.jpg",
+			parentDir + "/Resources/Sky/skybox/topNight.jpg",
+			parentDir + "/Resources/Sky/skybox/bottomNight.jpg",
+			parentDir + "/Resources/Sky/skybox/frontNight.jpg",
+			parentDir + "/Resources/Sky/skybox/backNight.jpg"
+		};
+
+	}
+	else
+	{
+		isDay = 1;
+		std::string facesCubemap[6] =
+		{
+			parentDir + "/Resources/Sky/skybox/right.jpg",
+			parentDir + "/Resources/Sky/skybox/left.jpg",
+			parentDir + "/Resources/Sky/skybox/top.jpg",
+			parentDir + "/Resources/Sky/skybox/bottom.jpg",
+			parentDir + "/Resources/Sky/skybox/front.jpg",
+			parentDir + "/Resources/Sky/skybox/back.jpg"
+		};
+	}
+}
 
 float skyboxVertices[] =
 {
@@ -124,7 +157,8 @@ int main()
 	std::string parentDir = (fs::current_path()).string();
 	//std::string modelPath = "/Resources/Sky/models/airplane/scene.gltf";
 	//submarinMetal/submarinMetal.gltf
-	std::string modelPath = "/Resources/submarinMetal/submarinMetal.gltf";
+	/*std::string modelPath = "/Resources/submarinMetal/submarinMetal.gltf";*/
+	std::string modelPath = "/Resources/new_submarine/submarinfinal.gltf";
 	std::string modelPath2 = "/Resources/teren/terrainSmall.gltf";
 	std::string modelPath3 = "/Resources/apa/water3.gltf";
 
@@ -258,7 +292,10 @@ int main()
 		
 		// Updates and exports the camera matrix to the Vertex Shader
 		camera.updateMatrix(45.0f, 0.1f, 100.0f);
-
+		if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
+		{
+			changeSkyBox(isDay);
+		}
 
 		// Draw the normal model
 		model.Draw(shaderProgram, camera);
