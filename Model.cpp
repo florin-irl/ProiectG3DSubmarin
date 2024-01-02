@@ -68,6 +68,20 @@ void Model::InputsModel(GLFWwindow* window, float deltaTime)
 	}
 }
 
+void Model::SetPosition(const glm::vec3& newPosition)
+{
+	Position = newPosition;
+}
+
+void Model::updateModelMatrix()
+{
+	glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), Position);
+	glm::mat4 rotationMatrix = glm::mat4_cast(glm::quat(rotationsMeshes[0])); // Assuming the first rotation is the main rotation
+	glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), scalesMeshes[0]); // Assuming the first scale is the main scale
+
+	matricesMeshes[0] = translationMatrix * rotationMatrix * scaleMatrix;
+}
+
 void Model::loadMesh(unsigned int indMesh)
 {
 	// Get all accessor indices

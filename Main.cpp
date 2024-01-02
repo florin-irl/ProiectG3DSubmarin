@@ -284,6 +284,8 @@ int main()
 			//camera.Inputs(window);
 		}
 
+		
+
 		// Specify the color of the background
 		glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
 		// Clean the back buffer and depth buffer
@@ -293,6 +295,15 @@ int main()
 		// s (delete this if you have disabled VSync)
 		camera.Inputs(window, deltaTime);
 		
+		glm::vec3 submarineOffset = camera.Position + glm::vec3(-13.0f,-5.0f, 0.0f);
+		//glm::vec3 cameraOffset = glm::vec3(1.0f, 3.0f, 5.0f);
+
+
+		model.SetPosition(submarineOffset);
+		model.updateModelMatrix();
+
+		//camera.Position = submarineOffset + cameraOffset;
+
 		// Updates and exports the camera matrix to the Vertex Shader
 		camera.updateMatrix(45.0f, 0.1f, 100.0f);
 		if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
