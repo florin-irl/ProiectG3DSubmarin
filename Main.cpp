@@ -295,7 +295,7 @@ int main()
 		// s (delete this if you have disabled VSync)
 		camera.Inputs(window, deltaTime);
 		
-		glm::vec3 submarineOffset = camera.Position - glm::vec3(0.0f, 0.0f, 2.0f);
+		glm::vec3 submarineOffset = camera.Position + glm::vec3(-13.0f,-5.0f, 0.0f);
 		//glm::vec3 cameraOffset = glm::vec3(1.0f, 3.0f, 5.0f);
 
 
