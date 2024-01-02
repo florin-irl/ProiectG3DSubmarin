@@ -304,7 +304,7 @@ std::vector<Texture> Model::getTextures()
 			// Load diffuse texture
 			if (texPath.find("grunge-wall-texture") != std::string::npos || texPath.find("diffuse") != std::string::npos
 				||texPath.find("underwater_sand1")!=std::string::npos||texPath.find("water_texture")!=std::string::npos
-				|| texPath.find("octo") != std::string::npos)
+				|| texPath.find("octo") != std::string::npos|| texPath.find("wood") != std::string::npos)
 			{
 				Texture diffuse = Texture((fileDirectory + texPath).c_str(), "diffuse", loadedTex.size());
 				textures.push_back(diffuse);
