@@ -26,6 +26,10 @@ public:
 
 	void InputsModel(GLFWwindow* window, float deltaTime);
 
+	void SetPosition(const glm::vec3& newPosition);
+
+	void updateModelMatrix();
+
 private:
 	// Variables for easy access
 	/*Assimp::Importer importer;
