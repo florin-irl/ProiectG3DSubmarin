@@ -161,11 +161,13 @@ int main()
 	std::string modelPath = "/Resources/new_submarine/submarinfinal.gltf";
 	std::string modelPath2 = "/Resources/teren/terrainSmall.gltf";
 	std::string modelPath3 = "/Resources/apa/water3.gltf";
+	std::string modelPath4 = "/Resources/octopus/octo.gltf";
 
 	// Load in models
 	Model model((parentDir + modelPath).c_str());
 	Model model2((parentDir + modelPath2).c_str());
 	Model model3((parentDir + modelPath3).c_str());
+	Model model4((parentDir + modelPath4).c_str());
 
 
 
@@ -296,13 +298,14 @@ int main()
 		{
 			changeSkyBox(isDay);
 		}
-
+		model.InputsModel(window, deltaTime);
 		// Draw the normal model
+	
 		model.Draw(shaderProgram, camera);
 		model2.Draw(shaderProgram, camera);
 		model3.Draw(shaderProgram, camera);
-
-		model.InputsModel(window, deltaTime);
+		model4.Draw(shaderProgram, camera);
+		
 		// Since the cubemap will always have a depth of 1.0, we need that equal sign so it doesn't get discarded
 		glDepthFunc(GL_LEQUAL);
 

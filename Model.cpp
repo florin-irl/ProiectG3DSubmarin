@@ -17,22 +17,16 @@ Model::Model(const char* file)
 }
 
 void Model::Draw(Shader& shader, Camera& camera) {
-	// Iterate through all the meshes and draw each one
 	for (unsigned int i = 0; i < meshes.size(); ++i) {
-		// Apply translation, rotation, and scale to the model matrix
-		glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), Position);
+		glm::mat4 modelMatrix = glm::mat4(1.0f);
+		
+		modelMatrix = glm::translate(modelMatrix, Position);
 		modelMatrix = modelMatrix * glm::mat4_cast(rotationsMeshes[i]);  // Assuming rotationsMeshes stores quaternions
 		modelMatrix = glm::scale(modelMatrix, scalesMeshes[i]);
 
-		// Set the model matrix in the shader
+
 		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
-		// Pass other necessary matrices if needed (translation, rotation, scale)
-		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "translation"), 1, GL_FALSE, glm::value_ptr(glm::translate(glm::mat4(1.0f), translationsMeshes[i])));
-		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "rotation"), 1, GL_FALSE, glm::value_ptr(glm::mat4_cast(rotationsMeshes[i])));
-		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "scale"), 1, GL_FALSE, glm::value_ptr(glm::scale(glm::mat4(1.0f), scalesMeshes[i])));
-
-		// Draw the mesh
 		meshes[i].Draw(shader, camera, matricesMeshes[i]);
 	}
 }
@@ -42,7 +36,7 @@ void Model::InputsModel(GLFWwindow* window, float deltaTime)
 	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
 	{
 		Position += speed * 2 * deltaTime * Orientation;
-		std::cout << Position.x << ' '<< Position.y <<' '<< Position.z << std::endl;
+		
 	}
 	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
 	{
@@ -309,7 +303,8 @@ std::vector<Texture> Model::getTextures()
 		{
 			// Load diffuse texture
 			if (texPath.find("grunge-wall-texture") != std::string::npos || texPath.find("diffuse") != std::string::npos
-				||texPath.find("underwater_sand1")!=std::string::npos||texPath.find("water_texture")!=std::string::npos)
+				||texPath.find("underwater_sand1")!=std::string::npos||texPath.find("water_texture")!=std::string::npos
+				|| texPath.find("octo") != std::string::npos)
 			{
 				Texture diffuse = Texture((fileDirectory + texPath).c_str(), "diffuse", loadedTex.size());
 				textures.push_back(diffuse);
