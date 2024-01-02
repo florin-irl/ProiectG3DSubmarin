@@ -159,7 +159,7 @@ int main()
 	//submarinMetal/submarinMetal.gltf
 	/*std::string modelPath = "/Resources/submarinMetal/submarinMetal.gltf";*/
 	std::string modelPath = "/Resources/new_submarine/submarinfinal.gltf";
-	std::string modelPath2 = "/Resources/teren/terrainSmall.gltf";
+	std::string modelPath2 = "/Resources/teren/terenFinal.gltf";
 	std::string modelPath3 = "/Resources/apa/water3.gltf";
 	std::string modelPath4 = "/Resources/octopus/octo.gltf";
 	std::string modelPath5 = "/Resources/chest/cufar.gltf";
