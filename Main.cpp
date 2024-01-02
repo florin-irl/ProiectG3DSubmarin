@@ -163,15 +163,20 @@ int main()
 	std::string modelPath3 = "/Resources/apa/water3.gltf";
 	std::string modelPath4 = "/Resources/octopus/octo.gltf";
 	std::string modelPath5 = "/Resources/chest/cufar.gltf";
+	std::string modelPath6 = "/Resources/BlueWhale/piatra.gltf";
+	std::string modelPath7 = "/Resources/boat/boat.gltf";
+	std::string modelPath8 = "/Resources/turtle/turtle.gltf";
+	std::string modelPath9 = "/Resources/Sky/models/airplane/scene.gltf";
 	// Load in models
 	Model model((parentDir + modelPath).c_str());
 	Model model2((parentDir + modelPath2).c_str());
 	Model model3((parentDir + modelPath3).c_str());
 	Model model4((parentDir + modelPath4).c_str());
 	Model model5((parentDir + modelPath5).c_str());
-
-
-
+	Model model6((parentDir + modelPath6).c_str());
+	Model model7((parentDir + modelPath7).c_str());
+	Model model8((parentDir + modelPath8).c_str());
+	Model model9((parentDir + modelPath9).c_str());
 	// Variables to create periodic event for FPS displaying
 	double prevTime = 0.0;
 	double crntTime = 0.0;
@@ -318,7 +323,10 @@ int main()
 		model3.Draw(shaderProgram, camera);
 		model4.Draw(shaderProgram, camera);
 		model5.Draw(shaderProgram, camera);
-		
+		model6.Draw(shaderProgram, camera);
+		model7.Draw(shaderProgram, camera);
+		model8.Draw(shaderProgram, camera);
+		model9.Draw(shaderProgram, camera);
 		// Since the cubemap will always have a depth of 1.0, we need that equal sign so it doesn't get discarded
 		glDepthFunc(GL_LEQUAL);
 
