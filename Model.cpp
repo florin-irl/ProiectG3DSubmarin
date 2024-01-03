@@ -36,7 +36,6 @@ void Model::InputsModel(GLFWwindow* window, float deltaTime)
 	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
 	{
 		Position += speed * 2 * deltaTime * Orientation;
-		std::cout << Orientation.x << " " << Orientation.y << " " << Orientation.z << '\n';
 	}
 	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
 	{
