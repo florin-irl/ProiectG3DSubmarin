@@ -4,6 +4,7 @@ namespace fs = std::filesystem;
 //------------------------------
 
 #include"Model.h"
+#include <iostream>
 
 
 const unsigned int width = 800;
@@ -310,7 +311,7 @@ int main()
 		//camera.Position = submarineOffset + cameraOffset;
 
 		// Updates and exports the camera matrix to the Vertex Shader
-		camera.updateMatrix(45.0f, 0.1f, 100.0f);
+		camera.updateMatrix(45.0f, 0.1f, 150.0f);
 		if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
 		{
 			changeSkyBox(isDay);
@@ -339,6 +340,8 @@ int main()
 		projection = glm::perspective(glm::radians(45.0f), (float)width / height, 0.1f, 100.0f);
 		glUniformMatrix4fv(glGetUniformLocation(skyboxShader.ID, "view"), 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(glGetUniformLocation(skyboxShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+		
+		//std::cout << model.Orientation.x << " " << model.Orientation.y << " " << model.Orientation.z << '\n';
 
 		// Draws the cubemap as the last object so we can save a bit of performance by discarding all fragments
 		// where an object is present (a depth of 1.0f will always fail against any object's depth value)
