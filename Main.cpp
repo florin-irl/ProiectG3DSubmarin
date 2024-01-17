@@ -7,8 +7,8 @@ namespace fs = std::filesystem;
 #include <iostream>
 
 
-const unsigned int width = 800;
-const unsigned int height = 800;
+const unsigned int width = 1920;
+const unsigned int height = 1080;
 
 
 int isDay = 1;
@@ -302,7 +302,7 @@ int main()
 
 		camera.Inputs(window, deltaTime);
 		
-		glm::vec3 submarineOffset = camera.Position + glm::vec3(-0.5f,-7.0f, -16.0f);
+		glm::vec3 submarineOffset = camera.Position + glm::vec3(-1.0f,-5.0f, -16.0f);
 		//glm::vec3 cameraOffset = glm::vec3(1.0f, 3.0f, 5.0f);
 
 
