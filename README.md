@@ -3,6 +3,8 @@
 Youtube Demo:
 https://www.youtube.com/watch?v=J4PkcAejGAE
 
+Daca vrei să folosești proiectul ăsta pentru proiectul final la G3D, ia legătura cu mine.
+
 Proiectul are ca scop simularea unei plimbări cu submarinul pe și sub apă.
 
 Membrii echipei:
